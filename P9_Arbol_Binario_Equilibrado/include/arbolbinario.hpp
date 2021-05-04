@@ -93,56 +93,70 @@ class AB {
   }
 
   nodoB<Clave>* BuscarRama(nodoB<Clave>* nodo, Clave clave_dada) {
+    nodoB<Clave>* aux;
     if (nodo == NULL) {
       return NULL;
-    }
-    if (clave_dada == nodo->dato_) {
-      return nodo;
-    } 
-    if (clave_dada < nodo->dato_) {
-      return BuscarRama(nodo->izq_, clave_dada);
     } else {
-      return BuscarRama(nodo->dcho_, clave_dada);
+      if (clave_dada == nodo->dato_) {
+        return nodo;
+      } else {
+        aux = BuscarRama(nodo->izq_, clave_dada);
+        /*
+        if (clave_dada < nodo->dato_) {
+          return BuscarRama(nodo->izq_, clave_dada);
+        } else {
+          return BuscarRama(nodo->dcho_, clave_dada);
+        }*/
+      }
+      if (aux == NULL) {
+        return BuscarRama(nodo->dcho_, clave_dada);
+      } else {
+        return aux;
+      }
     }
   }
-
+/*
   nodoB<Clave>* Buscar(Clave& clave) {
     return BuscarRama(raiz_, clave);
   }
+*/
+  bool Buscar(const Clave& clave) {
+    return !(BuscarRama(raiz_, clave) == NULL);
+  }
 
-void printNivel(nodoB<Clave>* nodo, int nivel, nodoB<Clave>* nodo_anterior) {
-  if ((nodo == NULL)) {
-    if (nivel < 2) {
-      std::cout << "[.]";
-      return;
-    } else {
-      return;
+  void printNivel(nodoB<Clave>* nodo, int nivel, nodoB<Clave>* nodo_anterior) {
+    if ((nodo == NULL)) {
+      if (nivel < 2) {
+        std::cout << "[.]";
+        return;
+      } else {
+        return;
+      }
+    } 
+
+    if (nivel == 1) {
+      std::cout << "[";
+      nodo->printDato();
+      std::cout << "]";
+    } else if (nivel > 1) {
+      printNivel(nodo->izq_, nivel-1, nodo);
+      printNivel(nodo->dcho_, nivel-1, nodo);
     }
-  } 
-
-  if (nivel == 1) {
-    std::cout << "[";
-    nodo->printDato();
-    std::cout << "]";
-  } else if (nivel > 1) {
-    printNivel(nodo->izq_, nivel-1, nodo);
-    printNivel(nodo->dcho_, nivel-1, nodo);
   }
-}
 
-void print (nodoB<Clave>* nodo) {
-  int h = Alt();
-  nodoB<Clave>* aux(0);
-  for (int i = 1; i <= h+1; ++i) {
-    std::cout << "Nivel " << i-1 << ": ";
-    printNivel(nodo,i, aux);
-    std::cout << "\n";
+  void print (nodoB<Clave>* nodo) {
+    int h = Alt();
+    nodoB<Clave>* aux(0);
+    for (int i = 1; i <= h+1; ++i) {
+      std::cout << "Nivel " << i-1 << ": ";
+      printNivel(nodo,i, aux);
+      std::cout << "\n";
+    }
   }
-}
 
-void Print() {
-  print(raiz_);
-}
+  void Print() {
+    print(raiz_);
+  }
 
  private:
   nodoB<Clave> *raiz_;

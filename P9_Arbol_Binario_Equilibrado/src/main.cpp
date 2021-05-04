@@ -4,7 +4,12 @@
 #include "arbolbinario.hpp"
 
 #define INFINITO 999999
+
 #define RESET "\033[0m"
+#define BOLD "\033[1m"
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
 #define BOLD "\033[1m"
 
 int RecogerCantidadPositiva(int cantidad_max = INFINITO, int cantidad_min = 0) {
@@ -49,6 +54,11 @@ int main() {
       case 2:
         std::cout << "Introduzca la clave a buscar: ";
         std::cin >> clave_introducida;
+        if(arbol->Buscar(clave_introducida)) {
+          std::cout << GREEN << "Se ha encontrado una coincidencia\n" << RESET;
+        } else {
+          std::cout << RED << "No se han encontrado coincidencias\n" << RESET;
+        }
         break;
     }
   }

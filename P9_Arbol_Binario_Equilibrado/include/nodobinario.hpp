@@ -1,5 +1,8 @@
 #pragma once
 
+#define RESET "\033[0m"
+#define CYAN "\033[36m"
+
 template<class Clave>
 class nodoB {
  public:
@@ -7,7 +10,7 @@ class nodoB {
   : dato_(dato), izq_(izq), dcho_(dcho) {}
 
   void printDato() {
-    std::cout << dato_;
+    std::cout  << CYAN << dato_ << RESET;
   }
 
   Clave dato_;
