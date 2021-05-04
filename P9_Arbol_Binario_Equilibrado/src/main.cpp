@@ -10,7 +10,7 @@
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
-#define BOLD "\033[1m"
+#define CYAN "\033[36m"
 
 int RecogerCantidadPositiva(int cantidad_max = INFINITO, int cantidad_min = 0) {
 	int cantidad = 0;
@@ -48,12 +48,13 @@ int main() {
         std::cout << "Introduzca la clave a insertar: ";
         std::cin >> clave_introducida;
         arbol->InsertaEquil(clave_introducida);
-        std::cout << "\nInsertar: " << clave_introducida << "\n";
+        std::cout << "\nInsertar: " << CYAN << clave_introducida << "\n" << RESET;
         arbol->Print();
         break; 
       case 2:
         std::cout << "Introduzca la clave a buscar: ";
         std::cin >> clave_introducida;
+        std::cout << "Buscando: " << CYAN << clave_introducida << "\n" << RESET;
         if(arbol->Buscar(clave_introducida)) {
           std::cout << GREEN << "Se ha encontrado una coincidencia\n" << RESET;
         } else {
