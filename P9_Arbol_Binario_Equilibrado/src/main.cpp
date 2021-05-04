@@ -35,7 +35,7 @@ int main() {
 
   // Menú
   while (opcion != 0) {
-    std::cout << BOLD << "\n-----MENU-----\n" << RESET;
+    std::cout << BOLD << CYAN << "\n~~~~~~ M E N U ~~~~~~\n" << RESET;
     std::cout << "[0] Salir\n"
               << "[1] Insertar Clave\n"
               << "[2] Buscar Clave\n";
@@ -54,7 +54,7 @@ int main() {
       case 2:
         std::cout << "Introduzca la clave a buscar: ";
         std::cin >> clave_introducida;
-        std::cout << "Buscando: " << CYAN << clave_introducida << "\n" << RESET;
+        std::cout << "\nBuscando: " << CYAN << clave_introducida << "\n" << RESET;
         if(arbol->Buscar(clave_introducida)) {
           std::cout << GREEN << "Se ha encontrado una coincidencia\n" << RESET;
         } else {
