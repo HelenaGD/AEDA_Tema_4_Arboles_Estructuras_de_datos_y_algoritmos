@@ -24,7 +24,7 @@ int main() {
   // Generar Ab vacío
   AB<Clave> *arbol = new AB<Clave>;
   std::cout << "\nArbol vacio\n";
-  //arbol->MostrarAB();
+  arbol->Print();
 
   Clave clave_introducida;
 
@@ -51,10 +51,6 @@ int main() {
         std::cin >> clave_introducida;
         break;
     }
-
-     // Mostrar Árbol
-
-  
   }
   return 0;
 }

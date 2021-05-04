@@ -34,6 +34,23 @@ class AB {
 
   const int Tam() {return TamRama(raiz_);}
 
+  const int AltN(nodoB<Clave>* nodo) {
+    if (nodo == NULL) {
+      return 0;
+    }
+
+    int alt_i = AltN(nodo->izq_);
+    int alt_d = AltN(nodo->dcho_);
+
+    if (alt_d > alt_i) {
+      return ++alt_d;
+    } else {
+      return ++alt_i;
+    }
+  }
+
+  const int Alt() {return AltN(raiz_);}
+
   const bool EquilibrioRama(nodoB<Clave> *nodo) {
     if (nodo == NULL) return true;
     int eq = TamRama(nodo->izq_) - TamRama(nodo->dcho_);
@@ -93,85 +110,39 @@ class AB {
     return BuscarRama(raiz_, clave);
   }
 
-  void print(nodoB<Clave>* nodo) { //}, int &nivel, int &hijos) {
-    std::queue< nodoB<Clave> *> colaNodos;
-    int totalNodos = TamRama(raiz_);
-    //int techo = log2(totalNodos+1);
-    colaNodos.push(raiz_);
-    //int pot = 0;
-    int nivel = 0;
-    int hijos = 0;
-    while (colaNodos.size() > 0) {
-      int niveles = colaNodos.size();
-      std::cout << "Nivel " << nivel << ": ";
-
-      while (niveles > 0) {
-        nodoB<Clave>* dummy = colaNodos.front();
-        colaNodos.pop();
-        //std::cout<<std::setw((niveles==pow(2,pot))?pow(2, (techo-pot)):pow(2, (techo-pot+1)));
-        std::cout << "[";
-        if (dummy->dato_ == 0) {
-          std::cout << ".";
-        } else {
-          dummy->printDato();
-        }
-        std::cout << "]";
-        if(dummy->izq_ != NULL) {
-          colaNodos.push(dummy->izq_);
-          hijos++;
-        } else if (hijos != 0) {
-          colaNodos.push(0);
-        }
-        if(dummy->dcho_ != NULL) {
-          colaNodos.push(dummy->dcho_);
-          hijos = 2;
-        } else if (hijos != 0) {
-          colaNodos.push(0);
-          hijos = 0;
-        }
-        niveles--;
-      }
-
-      //pot++;
-      std::cout << std::endl;
-      nivel++;
+void printNivel(nodoB<Clave>* nodo, int nivel, nodoB<Clave>* nodo_anterior) {
+  if ((nodo == NULL)) {
+    if (nivel < 2) {
+      std::cout << "[.]";
+      return;
+    } else {
+      return;
     }
+  } 
+
+  if (nivel == 1) {
+    std::cout << "[";
+    nodo->printDato();
+    std::cout << "]";
+  } else if (nivel > 1) {
+    printNivel(nodo->izq_, nivel-1, nodo);
+    printNivel(nodo->dcho_, nivel-1, nodo);
+  }
 }
 
-    /*
-    if(nodo != NULL) {
-      nivel++;
-      if (nodo->izq_) {
-        print(nodo->izq_, nivel, hijos);
-      }
-      if(nodo->dcho_) {
-        print(nodo->dcho_, nivel, hijos);
-      }
-      std::cout << "[";
-      nodo->printDato();
-      hijos++;
-      std::cout << "]";
-      if ((nivel == 0) && (hijos == 2)) {
-        std::cout << "\n";
-        hijos = 0;
-      }
-    } else {
-      if (nivel == 0) {
-        std::cout << "[.]\n";
-      } else {
-        std::cout << "[.]";
-      }
-    }*/
-/*
-  void MostrarAB() {
-    int nivel = 0;
-    int hijos = 0;
-    std::cout << "Nivel " << nivel <<": ";
-    print(raiz_, nivel, hijos);
-  }*/
-  void Print() {
-    print(raiz_);
+void print (nodoB<Clave>* nodo) {
+  int h = Alt();
+  nodoB<Clave>* aux(0);
+  for (int i = 1; i <= h+1; ++i) {
+    std::cout << "Nivel " << i-1 << ": ";
+    printNivel(nodo,i, aux);
+    std::cout << "\n";
   }
+}
+
+void Print() {
+  print(raiz_);
+}
 
  private:
   nodoB<Clave> *raiz_;
