@@ -10,7 +10,7 @@ class nodoB {
   : dato_(dato), izq_(izq), dcho_(dcho) {}
 
   void printDato() {
-    std::cout  << CYAN << dato_ << RESET;
+    std::cout << CYAN << dato_ << RESET;
   }
 
   Clave dato_;

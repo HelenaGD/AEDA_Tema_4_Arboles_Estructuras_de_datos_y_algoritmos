@@ -5,10 +5,26 @@
 class modificacion {
  public:
   modificacion(){};
+  modificacion(std::string color, std::string potencia, std::string marca)
+  : color_(color), potencia_(potencia), marca_(marca){};
+
   modificacion(const modificacion&){};
+
+  modificacion& operator = (const modificacion &p) {
+    if (this != &p) {
+      this->color_ = p.color_;
+      this->marca_ = p.marca_;
+      this->potencia_ = p.potencia_;
+    }
+    return *this;
+  }
 
   bool operator == (const modificacion &p) const {
     return ((this->color_ == p.color_) && (this->marca_ == p.marca_) && (this->potencia_ == p.potencia_));
+  }
+
+  void print() {
+    std::cout << color_ << "|" << potencia_ << "|" << marca_;
   }
 
   friend std::ostream& operator << (std::ostream &o, modificacion &p);
@@ -32,5 +48,6 @@ std::istream& operator >> (std::istream &i, modificacion &p) {
     i >> p.potencia_;
     std::cout << "Introducir marca: ";
     i >> p.marca_;
+    i.ignore();
     return i;
   }
