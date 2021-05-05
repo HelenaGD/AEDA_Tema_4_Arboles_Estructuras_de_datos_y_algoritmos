@@ -1,5 +1,5 @@
 CXX		  := g++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb
+CXX_FLAGS := -Wall -Wextra -std=c++11 -ggdb
 
 BIN		:= bin
 SRC		:= src
@@ -9,7 +9,7 @@ TESTER := tests
 TESTS := tests
 
 LIBRARIES	:=
-EXECUTABLE	:= main
+EXECUTABLE	:= main.out
 
 
 all: $(BIN)/$(EXECUTABLE)

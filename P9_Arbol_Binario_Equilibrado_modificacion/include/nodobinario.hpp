@@ -6,8 +6,14 @@
 template<class Clave>
 class nodoB {
  public:
+ /*
   nodoB (const Clave dato, nodoB *izq = NULL, nodoB *dcho = NULL) 
-  : dato_(dato), izq_(izq), dcho_(dcho) {}
+  : dato_(dato), izq_(izq), dcho_(dcho) {}*/
+  nodoB (const Clave &dato, nodoB *izq = NULL, nodoB *dcho = NULL) {
+    dato_ = dato;
+    izq_ = izq;
+    dcho_ = dcho;
+  }
 
   void printDato() {
     std::cout << CYAN << dato_ << RESET;

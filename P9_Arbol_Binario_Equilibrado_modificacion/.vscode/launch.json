@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "cpp - Compilar y depurar el archivo activo",
+            "name": "g++ - Compilar y depurar el archivo activo",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/P9_Arbol_Binario_Equilibrado_modificacion/",
+            "program": "${workspaceFolder}/bin/main.out",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/P9_Arbol_Binario_Equilibrado_modificacion/",
+            "cwd": "${workspaceFolder}/bin/main.out",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -22,7 +22,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: cpp compilar archivo activo",
+            "preLaunchTask": "C/C++: g++ compilar archivo activo",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]

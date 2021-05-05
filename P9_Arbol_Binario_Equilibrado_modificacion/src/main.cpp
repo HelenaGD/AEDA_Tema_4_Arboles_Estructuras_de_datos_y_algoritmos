@@ -23,7 +23,7 @@ int RecogerCantidadPositiva(int cantidad_max = INFINITO, int cantidad_min = 0) {
 	return cantidad;
 }
 
-using Clave = modificacion;
+using Clave = coche;
 
 int main() {
   int opcion = -1;
@@ -47,9 +47,10 @@ int main() {
         break;
       case 1:
         std::cout << "Introduzca la clave a insertar: ";
-        std::cin >> clave_introducida;
-        arbol->InsertaEquil(clave_introducida);
+        //std::cin >> clave_introducida;
+        clave_introducida.Introducir();
         std::cout << "\nInsertar: " << CYAN << clave_introducida << "\n" << RESET;
+        arbol->InsertaEquil(clave_introducida);
         arbol->Print();
         break; 
       case 2:

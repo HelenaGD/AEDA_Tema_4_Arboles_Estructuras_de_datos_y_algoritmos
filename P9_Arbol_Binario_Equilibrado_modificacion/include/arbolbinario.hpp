@@ -68,7 +68,7 @@ class AB {
     return EqulibrioRama(raiz_);
   }
 
-  void InsertaEquilRama (const Clave dato, nodoB<Clave>* nodo) {
+  void InsertaEquilRama (const Clave &dato, nodoB<Clave>* nodo) {
     if (TamRama(nodo->izq_) <= TamRama(nodo->dcho_)) {
       if (nodo->izq_ != NULL) {
         InsertaEquilRama(dato, nodo->izq_);
@@ -84,7 +84,7 @@ class AB {
     }
   }
 
-  void InsertaEquil(const Clave dato) {
+  void InsertaEquil(Clave &dato) {
     if (raiz_ == NULL) {
       raiz_ = new nodoB<Clave>(dato,NULL,NULL);
     } else {
@@ -92,7 +92,7 @@ class AB {
     }
   }
 
-  nodoB<Clave>* BuscarRama(nodoB<Clave>* nodo, Clave clave_dada) {
+  nodoB<Clave>* BuscarRama(nodoB<Clave>* nodo, Clave &clave_dada) {
     nodoB<Clave>* aux;
     if (nodo == NULL) {
       return NULL;
@@ -120,7 +120,7 @@ class AB {
     return BuscarRama(raiz_, clave);
   }
 
-  bool Buscar(const Clave& clave) {
+  bool Buscar(Clave& clave) {
     return !(BuscarRama(raiz_, clave) == NULL);
   }
 
