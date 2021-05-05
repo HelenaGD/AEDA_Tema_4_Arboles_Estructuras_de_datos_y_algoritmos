@@ -6,7 +6,7 @@
 template<class Clave>
 class nodoB {
  public:
-  nodoB (const int dato, nodoB *izq = NULL, nodoB *dcho = NULL) 
+  nodoB (const Clave dato, nodoB *izq = NULL, nodoB *dcho = NULL) 
   : dato_(dato), izq_(izq), dcho_(dcho) {}
 
   void printDato() {

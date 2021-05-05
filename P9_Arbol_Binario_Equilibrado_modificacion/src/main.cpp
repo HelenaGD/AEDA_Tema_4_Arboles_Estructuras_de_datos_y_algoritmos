@@ -2,6 +2,7 @@
 
 #include "nodobinario.hpp"
 #include "arbolbinario.hpp"
+#include "../include/modificacion.hpp"
 
 #define INFINITO 999999
 
@@ -22,7 +23,7 @@ int RecogerCantidadPositiva(int cantidad_max = INFINITO, int cantidad_min = 0) {
 	return cantidad;
 }
 
-using Clave = int;
+using Clave = modificacion;
 
 int main() {
   int opcion = -1;
