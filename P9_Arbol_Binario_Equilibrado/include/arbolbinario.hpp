@@ -115,11 +115,11 @@ class AB {
       }
     }
   }
-/*
-  nodoB<Clave>* Buscar(Clave& clave) {
+
+  nodoB<Clave>* BuscarClave(Clave& clave) {
     return BuscarRama(raiz_, clave);
   }
-*/
+
   bool Buscar(const Clave& clave) {
     return !(BuscarRama(raiz_, clave) == NULL);
   }
