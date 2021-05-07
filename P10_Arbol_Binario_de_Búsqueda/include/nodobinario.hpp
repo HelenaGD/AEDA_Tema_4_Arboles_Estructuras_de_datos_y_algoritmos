@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 #define RESET "\033[0m"
 #define CYAN "\033[36m"

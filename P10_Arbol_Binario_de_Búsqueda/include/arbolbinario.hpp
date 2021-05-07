@@ -10,6 +10,9 @@ template<class Clave>
 class AB {
  public:
   AB():raiz_(NULL){}
+  AB(nodoBB<Clave>* raiz) {
+    raiz_ = raiz;
+  }
   ~AB() {Podar(raiz_);}
 
   void Podar(nodoBB<Clave>* &nodo) {
@@ -28,13 +31,13 @@ class AB {
     return ((!nodo->dcho_)&&(!nodo->izq_));
   }
 
-  const int TamRama(nodoBB<Clave> *nodo) {
+  int TamRama(nodoBB<Clave> *nodo) const {
     return (nodo == NULL) ? 0 : (1 + TamRama(nodo->izq_) + TamRama(nodo->dcho_));
   }
 
-  const int Tam() {return TamRama(raiz_);}
+  int Tam() const {return TamRama(raiz_);}
 
-  const int AltN(nodoBB<Clave>* nodo) {
+  int AltN(nodoBB<Clave>* nodo) const {
     if (nodo == NULL) {
       return 0;
     }
@@ -49,9 +52,9 @@ class AB {
     }
   }
 
-  const int Alt() {return AltN(raiz_);}
+  int Alt() const {return AltN(raiz_);}
 
-  const bool EquilibrioRama(nodoBB<Clave> *nodo) {
+  bool EquilibrioRama(nodoBB<Clave> *nodo) const {
     if (nodo == NULL) return true;
     int eq = TamRama(nodo->izq_) - TamRama(nodo->dcho_);
     switch (eq) {
@@ -64,7 +67,7 @@ class AB {
     }
   }
 
-  const bool Equilibrado() {
+  bool Equilibrado() const {
     return EqulibrioRama(raiz_);
   }
 
@@ -96,30 +99,6 @@ class AB {
   //virtual void InsertarRama(nodoBB<Clave>* nodo, Clave& clave_dada)  = 0;
 
   virtual nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) = 0;
-/*
-  nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) {
-    nodoBB<Clave>* aux;
-    if (nodo == NULL) {
-      return NULL;
-    } else {
-      if (clave_dada == nodo->dato_) {
-        return nodo;
-      } else {
-        aux = BuscarRama(nodo->izq_, clave_dada);
-        /*
-        if (clave_dada < nodo->dato_) {
-          return BuscarRama(nodo->izq_, clave_dada);
-        } else {
-          return BuscarRama(nodo->dcho_, clave_dada);
-        }//
-      }
-      if (aux == NULL) {
-        return BuscarRama(nodo->dcho_, clave_dada);
-      } else {
-        return aux;
-      }
-    }
-  }*/
 
   nodoBB<Clave>* BuscarClave(Clave& clave) {
     return BuscarRama(raiz_, clave);
@@ -161,6 +140,10 @@ class AB {
 
   void Print() {
     print(raiz_);
+  }
+
+  nodoBB<Clave>* getraiz(){
+    return raiz_;
   }
 
  protected:

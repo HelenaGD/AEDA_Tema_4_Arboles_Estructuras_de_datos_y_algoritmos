@@ -8,11 +8,11 @@ template<class Clave>
 class ABB: public AB<Clave>{
  public:
   ABB() : AB<Clave>() {};
+  ABB(nodoBB<Clave>* raiz) : AB<Clave>(raiz){};
   ~ABB(){};
   //ABB(){};
 
   nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) {
-    nodoBB<Clave>* aux;
     if (nodo == NULL) {
       return NULL;
     } else {
