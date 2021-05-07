@@ -7,7 +7,9 @@
 template<class Clave>
 class ABB: public AB<Clave>{
  public:
-  //ABB() : AB() {};
+  ABB() : AB<Clave>() {};
+  ~ABB(){};
+  //ABB(){};
 
   nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) {
     nodoBB<Clave>* aux;
@@ -26,8 +28,8 @@ class ABB: public AB<Clave>{
     }
   };
 
-  void Insertar(const Clave& clave_dada) {
-    InsertarRama(raiz_, clave_dada);
+  void Insertar(Clave& clave_dada) {
+    InsertarRama(AB<Clave>::raiz_, clave_dada);
   }
 
   void InsertarRama(nodoBB<Clave>* &nodo, Clave& clave_dada) {

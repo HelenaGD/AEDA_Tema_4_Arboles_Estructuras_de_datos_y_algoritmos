@@ -92,10 +92,10 @@ class AB {
     }
   }
 
-  virtual void Insertar(const Clave& clave_dada) const = 0;
-  virtual void InsertarRama(nodoBB<Clave>* nodo, Clave& clave_dada) const = 0;
+  virtual void Insertar(Clave& clave_dada) = 0;
+  //virtual void InsertarRama(nodoBB<Clave>* nodo, Clave& clave_dada)  = 0;
 
-  virtual nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) const = 0;
+  virtual nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) = 0;
 /*
   nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) {
     nodoBB<Clave>* aux;
