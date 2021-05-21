@@ -39,7 +39,7 @@ int main() {
   Clave clave_introducida;
 
   std::cout << "Traza activada: ";
-  std::cout << ((traza) ? GREEN"Si"RESET : RED"No"RESET) << std::endl;
+  std::cout << ((traza) ? GREEN "Si" RESET : RED "No" RESET) << std::endl;
 
   // Menú
   while (opcion != 0) {
@@ -78,7 +78,7 @@ int main() {
         break;
       case 4:
         std::cout << "Traza activada: ";
-        std::cout << ((traza) ? GREEN"Si"RESET : RED"No"RESET) << std::endl;
+        std::cout << ((traza) ? GREEN "Si" RESET : RED "No" RESET) << std::endl;
         break;
     }
   }

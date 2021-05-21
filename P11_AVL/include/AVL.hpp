@@ -79,19 +79,19 @@ class AVL: public ABB<Clave>{
       crece = true;
     }
     else if (nuevo->clave_ < nodo->clave_) {
-      inserta_bal(nodo->izdo_,nuevo,crece);
+      inserta_bal(nodo->izq_,nuevo,crece);
       if (crece) insert_re_balancea_izda(nodo);
     }
     else {
-      inserta_bal(nodo->dcho_, nuevo, crece);
+      inserta_bal(nodoBB<Clave>::dcho_, nuevo, crece);
       if (crece) insert_re_balancea_dcha(nodo);
     }
   };
 
   void Insertar(Clave ClaveDada) {
-    nodoAVL<Clave> nuevo = nodoAVL( raiz_->bal_, ClaveDada, ClaveDada, 0);
+    nodoAVL<Clave>* nuevo = new nodoAVL<Clave>(AB<Clave>::root()->bal_, ClaveDada, ClaveDada, 0);
     bool crece = false;
-    inserta_bal(nodoBB<Clave>::raiz_, nuevo, crece);
+    inserta_bal(AB<Clave>::root(), nuevo, crece);
   }
 
   void elimina_rama( nodoAVL<Clave>* &nodo, Clave& clave_dada, bool& decrece) {

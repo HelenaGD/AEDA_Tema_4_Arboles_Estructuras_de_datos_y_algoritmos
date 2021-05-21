@@ -6,6 +6,9 @@
 
 template<class Clave>
 class ABB: public AB<Clave>{
+ protected:
+  nodoAVL<Clave>*& root() {return reinterpret_cast<nodoAVL<Clave>*&>(AB<Clave>::root());}
+
  public:
   ABB() : AB<Clave>() {};
   ABB(nodoBB<Clave>* raiz) : AB<Clave>(raiz){};

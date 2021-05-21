@@ -46,5 +46,6 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "iomanip": "cpp"
-  }
+  },
+  "python.pythonPath": "C:\\Users\\USUARIO\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }

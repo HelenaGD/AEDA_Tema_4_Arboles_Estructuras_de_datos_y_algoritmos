@@ -148,6 +148,8 @@ class AB {
     return raiz_;
   }
 
- protected:
+ private:
   nodoBB<Clave> *raiz_;
+ protected:
+  nodoBB<Clave>*& root() {return raiz_;}
 };

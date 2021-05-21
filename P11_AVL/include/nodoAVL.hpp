@@ -13,6 +13,9 @@ class nodoAVL: public nodoBB<Clave>{
   nodoAVL (const int bal, const Clave &dato, const Clave& clave, nodoBB<Clave> *izq = NULL, nodoBB<Clave> *dcho = NULL) : nodoBB<Clave>(dato, clave, izq, dcho) {
     bal_ = bal;
   }
+
+  int balance() {return bal_;}
+
   //nodoAVL(nodoBB<Clave>* raiz) : AB<Clave>(raiz){};
   ~nodoAVL(){};
 };
