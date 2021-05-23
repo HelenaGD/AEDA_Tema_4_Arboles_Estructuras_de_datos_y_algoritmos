@@ -31,8 +31,8 @@ int main() {
   int opcion = -1;
   bool traza = false;
   // Generar Ab vacío
-  AVL<Clave> *arbol;
-  arbol = new AVL<Clave>();
+  ABB<Clave> *arbol;
+  arbol = new AVL<Clave>;
   std::cout << "\nArbol vacio\n";
   arbol->Print();
 
@@ -74,11 +74,23 @@ int main() {
       case 3:
         std::cout << "Introduzca la clave a eliminar: ";
         std::cin >> clave_introducida;
-        
+        if(arbol->BuscarClave(clave_introducida)) {
+          std::cout << "\nEliminando: " << CYAN << clave_introducida << "\n" << RESET;
+          arbol->Eliminar(clave_introducida);
+        } else {
+          std::cout << "\nLa clave no está en el arbol\n";
+        }
+        arbol->Print();
         break;
       case 4:
         std::cout << "Traza activada: ";
+        if (traza) {
+          traza = false;
+        } else {
+          traza = true;
+        }
         std::cout << ((traza) ? GREEN "Si" RESET : RED "No" RESET) << std::endl;
+        arbol->traza(traza);
         break;
     }
   }

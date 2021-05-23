@@ -6,6 +6,10 @@
 
 template<class Clave>
 class nodoBB {
+ protected:
+  nodoBB<Clave>*& izq() {return izq_;}
+  nodoBB<Clave>*& dcho() {return dcho_;}
+
  public:
   nodoBB (const Clave &dato, const Clave& clave, nodoBB *izq = NULL, nodoBB *dcho = NULL) 
   : dato_(dato), clave_(clave), izq_(izq), dcho_(dcho) {}
@@ -17,6 +21,6 @@ class nodoBB {
   Clave dato_;
   Clave clave_;
   // Nodos hijos
-  nodoBB *izq_;
-  nodoBB *dcho_;
+  nodoBB<Clave> *izq_;
+  nodoBB<Clave> *dcho_;
 };

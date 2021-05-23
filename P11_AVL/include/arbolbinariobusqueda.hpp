@@ -6,6 +6,8 @@
 
 template<class Clave>
 class ABB: public AB<Clave>{
+ private:
+  bool traza_;
  protected:
   nodoAVL<Clave>*& root() {return reinterpret_cast<nodoAVL<Clave>*&>(AB<Clave>::root());}
 
@@ -14,6 +16,10 @@ class ABB: public AB<Clave>{
   ABB(nodoBB<Clave>* raiz) : AB<Clave>(raiz){};
   ~ABB(){};
   //ABB(){};
+
+  void traza(bool seleccion) {
+    traza_ = seleccion;
+  }
 
   nodoBB<Clave>* BuscarRama(nodoBB<Clave>* nodo, Clave clave_dada) {
     if (nodo == NULL) {
@@ -32,7 +38,7 @@ class ABB: public AB<Clave>{
   };
 
   void Insertar(Clave& clave_dada) {
-    InsertarRama(AB<Clave>::raiz_, clave_dada);
+    InsertarRama(AB<Clave>::root(), clave_dada);
   }
 
   void InsertarRama(nodoBB<Clave>* &nodo, Clave& clave_dada) {
