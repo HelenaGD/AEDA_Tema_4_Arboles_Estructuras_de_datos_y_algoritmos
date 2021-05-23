@@ -10,6 +10,7 @@ class ABB: public AB<Clave>{
   bool traza_;
  protected:
   nodoAVL<Clave>*& root() {return reinterpret_cast<nodoAVL<Clave>*&>(AB<Clave>::root());}
+  bool traza() {return traza_;}
 
  public:
   ABB() : AB<Clave>() {};

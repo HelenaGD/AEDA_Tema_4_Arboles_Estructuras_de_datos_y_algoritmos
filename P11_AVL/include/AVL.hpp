@@ -8,6 +8,7 @@ template<class Clave>
 class AVL: public ABB<Clave>{
  protected:
   nodoAVL<Clave>*& root() {return reinterpret_cast<nodoAVL<Clave>*&>(AB<Clave>::root());}
+  bool traza() {return reinterpret_cast<bool>(ABB<Clave>::traza());}
  
  public:
   AVL() : ABB<Clave>() {};
@@ -15,6 +16,9 @@ class AVL: public ABB<Clave>{
   ~AVL(){};
 
   void rotacion_II(nodoAVL<Clave>* &nodo) {
+    if (traza()) {
+      std::cout << "Rotación II en [" << nodo->dato_ << "]\n"; 
+    }
     nodoAVL<Clave>* nodo1 = nodo->izq();
     nodo->izq() = nodo1->dcho();
     nodo1->dcho() = nodo;
